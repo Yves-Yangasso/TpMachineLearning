@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.preprocessing import StandardScaler
-# ========================================
+# ==========================================================================================================================================================================
 
 # --- EXERCICE 1 : Chargement et Exploration des Données (20 min) ---
 print("=== EXERCICE 1 : Chargement et Exploration ===")
@@ -22,7 +22,7 @@ diabetes = load_diabetes()
 # Affichage basique
 print(f"Nombre d’échantillons : {diabetes.data.shape[0]}")  # 442
 print(f"Nombre de features : {diabetes.data.shape[1]}")     # 10
-print(f"Noms des features : {diabetes.feature_names}")     # ['age', 'sex', 'bmi', ...]
+print(f"Noms des features : {diabetes.feature_names}")    
 print("Description de la cible (extrait) :\n", diabetes.DESCR[:500] + "...")  # Mesure quantitative progression
 
 # DataFrame Pandas
@@ -31,9 +31,8 @@ df['target'] = diabetes.target
 print("\n5 premières lignes :\n", df.head())
 print("\nStatistiques descriptives :\n", df.describe())
 
-# Réflexion : Pourquoi régression ? Cible continue (progression numérique 25-346), non catégorielle (vs. classif. binaire).
-print("\n[RÉFLEXION EX1] : Dataset pour régression car cible quantitative (prédit valeur, pas classe).")
-# ========================================
+
+# =======================================================================================================================================================================
 
 # --- EXERCICE 2 : Visualisation des Données (30 min) ---
 print("\n=== EXERCICE 2 : Visualisation ===")
@@ -59,11 +58,9 @@ plt.figure(figsize=(8,6))
 sns.histplot(data=df, x='target', kde=True)
 plt.title('Distribution de la Progression du Diabète')
 plt.show()
-# Distribution normale ? Oui, approximativement (unimodale, symétrique).
 
-# Réflexion : Relation linéaire modérée (visibles pour 'bmi') → Justifie régression linéaire (assume linéarité, simple).
-print("[RÉFLEXION EX2] : Relation linéaire claire modérée ; justifie régr. lin. comme baseline interprétable.")
-# ========================================
+
+# =======================================================================================================================================================================
 
 # --- EXERCICE 3 : Construction d’un Modèle de Régression Linéaire (40 min) ---
 print("\n=== EXERCICE 3 : Modèle Régression Linéaire ===")
@@ -99,9 +96,7 @@ y_pred_simple = model_simple.predict(X_bmi_test)
 r2_simple = r2_score(y_test, y_pred_simple)
 print(f"R² simple (BMI) : {r2_simple:.2f} (vs. multiple : {r2:.2f})")  # Multiple mieux
 
-# Réflexion : R² >0.5 satisfaisant ? Modéré ici (0.45) ; risques overfitting si train>>test (ici faible, peu features).
-print("[RÉFLEXION EX3] : R²=0.45 modéré (acceptable baseline) ; overfitting risque si variance haute, mais CV confirmera.")
-# ========================================
+#================================================================================================================================================================
 
 # --- EXERCICE 4 : Amélioration et Évaluation Avancée (30 min) ---
 print("\n=== EXERCICE 4 : Amélioration et Évaluation ===")
@@ -130,4 +125,4 @@ plt.title('Vraies vs Prédites (Test)')
 plt.show()
 
 
-print("\n=== SCRIPT TERMINÉ : Tous exercices couverts. Graphs générés. Préparez session 3 (Classification) ! ===")
+print("\n========================================   SCRIPT TERMINÉ ==============================================")
