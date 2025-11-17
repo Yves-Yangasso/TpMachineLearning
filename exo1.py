@@ -62,7 +62,7 @@ plt.show()
 
 # =======================================================================================================================================================================
 
-# --- EXERCICE 3 : Construction d’un Modèle de Régression Linéaire (40 min) ---
+# --- EXERCICE 3 : Construction d’un Modèle de Régression Linéaire 
 print("\n=== EXERCICE 3 : Modèle Régression Linéaire ===")
 X_train, X_test, y_train, y_test = train_test_split(diabetes.data, diabetes.target, test_size=0.2, random_state=42)
 
@@ -82,7 +82,7 @@ print("Coefficients :", dict(zip(diabetes.feature_names, model.coef_)))
 
 # Impact BMI
 bmi_idx = diabetes.feature_names.index('bmi')
-print(f"Coefficient BMI : {model.coef_[bmi_idx]:.2f}")  # Impact positif fort
+print(f"Coefficient BMI : {model.coef_[bmi_idx]:.2f}") 
 
 # Prédiction exemple
 print(f"Prédiction échantillon 0 test : {y_pred[0]:.2f} (vrai : {y_test[0]:.2f})")
@@ -94,11 +94,11 @@ model_simple = LinearRegression()
 model_simple.fit(X_bmi_train, y_train)
 y_pred_simple = model_simple.predict(X_bmi_test)
 r2_simple = r2_score(y_test, y_pred_simple)
-print(f"R² simple (BMI) : {r2_simple:.2f} (vs. multiple : {r2:.2f})")  # Multiple mieux
+print(f"R² simple (BMI) : {r2_simple:.2f} (vs. multiple : {r2:.2f})")  
 
 #================================================================================================================================================================
 
-# --- EXERCICE 4 : Amélioration et Évaluation Avancée (30 min) ---
+# --- EXERCICE 4 : Amélioration et Évaluation Avancée  ---
 print("\n=== EXERCICE 4 : Amélioration et Évaluation ===")
 
 # Scaling
@@ -109,11 +109,11 @@ model_scaled = LinearRegression()
 model_scaled.fit(X_train_scaled, y_train)
 y_pred_scaled = model_scaled.predict(X_test_scaled)
 r2_scaled = r2_score(y_test, y_pred_scaled)
-print(f"R² sur test scalé : {r2_scaled:.2f}")  # Inchangé (LR invariante)
+print(f"R² sur test scalé : {r2_scaled:.2f}") 
 
 # Cross-validation
 scores = cross_val_score(LinearRegression(), diabetes.data, diabetes.target, cv=5, scoring='r2')
-print(f"R² moyen CV : {scores.mean():.2f} (±{scores.std():.2f})")  # Stable ~0.45
+print(f"R² moyen CV : {scores.mean():.2f} (±{scores.std():.2f})")  
 
 # Scatter plot vraies vs prédites
 plt.figure(figsize=(8,6))
